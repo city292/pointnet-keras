@@ -4,19 +4,19 @@ Created on Mon Jan  1 18:48:18 2018
 
 @author: Gary
 """
-import numpy as np
 import os
+
+# from keras.utils import np_utils
+import h5py
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
 import tensorflow as tf
 from keras import optimizers
-from keras.layers import Input
-from keras.models import Model
-from keras.layers import Dense, Reshape
 from keras.layers import Convolution1D, MaxPooling1D, BatchNormalization
+from keras.layers import Dense, Reshape
+from keras.layers import Input
 from keras.layers import Lambda, concatenate
-#from keras.utils import np_utils
-import h5py
+from keras.models import Model
 
 
 def mat_mul(A, B):
@@ -140,7 +140,7 @@ end of pointnet
 # define model
 model = Model(inputs=input_points, outputs=prediction)
 print(model.summary())
-
+exit()
 '''
 load train and test data
 '''

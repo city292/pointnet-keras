@@ -5,8 +5,11 @@ Created on Thu Dec 28 15:39:40 2017
 @author: Gary
 """
 
-import numpy as np
 import os
+
+import numpy as np
+
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 import tensorflow as tf
 from keras import optimizers
 from keras.layers import Input
@@ -16,7 +19,7 @@ from keras.layers import Convolution1D, MaxPooling1D, BatchNormalization
 from keras.layers import Lambda
 from keras.utils import np_utils
 import h5py
-
+from keras.utils.vis_utils import plot_model
 
 def mat_mul(A, B):
     return tf.matmul(A, B)
@@ -139,7 +142,7 @@ prediction = Flatten()(c)
 # print the model summary
 model = Model(inputs=input_points, outputs=prediction)
 print(model.summary())
-
+plot_model(model, 'train_cls_%d.png' % model.count_params(), show_layer_names=True, show_shapes=True)
 # load train points and labels
 path = os.path.dirname(os.path.realpath(__file__))
 train_path = os.path.join(path, "PrepData")
